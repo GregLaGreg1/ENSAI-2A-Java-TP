@@ -4,7 +4,7 @@
     "editor.formatOnSave": true,
     "editor.tabSize": 4,
     "explorer.compactFolders": false,
-    "[java]": {    
+    "[java]": {
         "editor.wordWrap": "wordWrapColumn",
         "editor.wrappingIndent": "indent",
         "editor.wordWrapColumn": 120,
@@ -17,5 +17,6 @@
         },
         "editor.inlayHints.enabled": "off",
     },
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.debug.settings.onBuildFailureProceed": true
 }

@@ -13,6 +13,11 @@ public class Main {
                 1954,
                 423);
 
+        Library lb = new Library(null, null, null, "lib_test");
+
+        lb.loadBooksFromCSV("src/main/ressources/books.csv");
+
         System.out.println(fellowshipOfTheRing);
+        System.out.println(lb.displayItems());
     }
 }
