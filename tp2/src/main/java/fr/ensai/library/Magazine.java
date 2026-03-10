@@ -1,3 +1,5 @@
+package fr.ensai.library;
+
 public class Magazine extends Item {
     private String issn;
     private String issueNumber;
@@ -11,7 +13,7 @@ public class Magazine extends Item {
 
     @Override
     public String toString() {
-        return String.format("Magazine %s written by %s", this.title, this.author);
+        return String.format("Magazine %s", getTitle());
     }
 
 }

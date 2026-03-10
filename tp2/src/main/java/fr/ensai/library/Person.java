@@ -1,3 +1,5 @@
+package fr.ensai.library;
+
 /**
  * Represents a ...
  */
@@ -5,7 +7,7 @@ public class Person {
     // -------------------------------------------------------
     // Attributes
     // -------------------------------------------------------
-    private String name
+    private String name;
     private int age;
 
     /**

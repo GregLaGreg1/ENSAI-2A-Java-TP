@@ -1,3 +1,5 @@
+package fr.ensai.library;
+
 /**
  * Represents a ...
  */
@@ -14,7 +16,7 @@ public class Item {
      * 
      * @param parameter1 parameter1_description
      * @pathis.year = year;
-        this.pageCount = pageCount;ram parameter2 parameter2_description
+     *              this.pageCount = pageCount;ram parameter2 parameter2_description
      */
     public Item(String title, int year, int pageCount) {
         this.title = title;
@@ -25,5 +27,5 @@ public class Item {
     public String getTitle() {
         return this.title;
     }
-    
+
 }

@@ -24,7 +24,7 @@ public class Book extends Item {
 
     @Override
     public String toString() {
-        return String.format("Book %s written by %s", this.title, this.author);
+        return String.format("Book %s written by %s", getTitle(), this.author);
     }
 
 }

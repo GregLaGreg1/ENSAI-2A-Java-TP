@@ -5,7 +5,7 @@ import java.util.Objects;
 /**
  * Represents an Author.
  */
-public class Author extends Person{
+public class Author extends Person {
 
     private String nationality;
 
@@ -15,10 +15,6 @@ public class Author extends Person{
     public Author(String name, int age, String nationality) {
         super(name, age);
         this.nationality = nationality;
-    }
-
-    public String getName() {
-        return this.name;
     }
 
     /**
@@ -33,12 +29,12 @@ public class Author extends Person{
             return false;
 
         Author author = (Author) obj;
-        return Objects.equals(this.name, author.name);
+        return Objects.equals(getName(), author.getName());
     }
 
     @Override
     public String toString() {
-        return String.format("Author %s", this.name);
+        return String.format("Author %s", getName());
     }
 
 }

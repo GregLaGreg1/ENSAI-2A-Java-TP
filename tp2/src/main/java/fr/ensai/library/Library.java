@@ -1,7 +1,10 @@
+package fr.ensai.library;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -85,6 +88,24 @@ public class Library {
 
         IOException e) {
             System.err.println("Error reading the file: " + e.getMessage());
+        }
+    }
+
+    public Loan findActiveLoanForItem(Item item) {
+        for (Loan loan : this.activeLoans) {
+            if (loan.getItemName().equals(item.getTitle())) {
+                return loan;
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<Book> getBooksByAuthor(Author author){
+        ArrayList<> list = 
+        for (Item item: this.items){
+            if (item instanceof Book && item.getAuthor().equals(author.getName())){
+
+            }
         }
     }
 }
