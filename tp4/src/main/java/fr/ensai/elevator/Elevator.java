@@ -10,7 +10,7 @@ import org.apache.logging.log4j.Logger;
 
 /**
  * Represents an elevator in a hotel simulation.
- * <p>
+ * 
  * Each Elevator has an ID, capacity, current floor, a list of passengers, a
  * queue of destination floors, and a record of last unloaded passengers. It
  * can move between floors, load and unload passengers, and maintain its queue
@@ -26,6 +26,7 @@ public class Elevator {
     private List<Integer> destinationQueue;
     private List<Person> passengers;
     private List<Person> lastUnloaded;
+    private Direction direction;
     private static Random random = new Random();
 
 
@@ -43,6 +44,7 @@ public class Elevator {
         this.destinationQueue = new ArrayList<>();
         this.passengers = new ArrayList<>();
         this.lastUnloaded = new ArrayList<>();
+        this.direction = this.getDirection();
     }
 
     public int getId() {
@@ -117,10 +119,11 @@ public class Elevator {
                         p.getTargetFloor(),
                         this.id);
             } else {
-                remaining.add(p);
+                remaining.add(p);   
             }
         }
-        this.passengers = remaining;
+        this.passengers.clear();
+        this.passengers.addAll(remaining);
         return this.lastUnloaded.size();
     }
 
@@ -132,7 +135,7 @@ public class Elevator {
      */
     public void loadPassengers(Floor floor) {
 
-        while (this.isFull()) {
+        while (!this.isFull()) {
             Person person = floor.boardNextPerson();
             if (person == null)
                 break;
@@ -189,7 +192,7 @@ public class Elevator {
      * @return boolean corresponding to a full elevator or not
      */
     public boolean isFull(){
-        return this.capacity > this.passengers.size();
+        return this.capacity <= this.passengers.size();
     }
 
     /**
@@ -204,7 +207,7 @@ public class Elevator {
     /**
      * Rempli l'assenceur avec un nombre de passagers données, si possible
      * 
-     *  @Parameter nombre de passagers qu'on veut faire monter
+     *  @Parameter nombre de passager qu'on veut faire monter
      */
     public void addPassengersElevator(int nbPassengers){
         if (nbPassengers > this.capacity){
@@ -218,4 +221,36 @@ public class Elevator {
         }
     }
 
+    public List<Integer> getdestinationQueue(){
+        return this.destinationQueue;
+    }
+
+    public List<Person> getlastUnloaded(){
+        return this.lastUnloaded;
+    }
+
+    public List<Person> getpassengers(){
+        return this.passengers;
+    }
+
+    /**
+     * Calcule la direction de l'ascenceur, où les directions sont
+     * stockées dans la classe ENUM
+     * 
+     * @return Direction de l'ascenceur
+     *  */ 
+    public Direction getDirection() {
+    if (this.destinationQueue.isEmpty()) {
+        return Direction.IDLE;
+    }
+    if (this.currentFloor > this.destinationQueue.get(0)) {
+        return Direction.UP;
+    } 
+    if (this.currentFloor < this.destinationQueue.get(0)) {
+        return Direction.DOWN;
+    }
+    else {
+        return Direction.IDLE;
+    }
 }   
+}

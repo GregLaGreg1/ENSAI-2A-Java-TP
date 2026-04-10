@@ -10,6 +10,7 @@ public class Person {
     private String nickname;
     private int startFloor;
     private int targetFloor;
+    private Direction direction;
 
     private static final String CHARS = "abcdefghijklmnopqrstuvwxyz";
     private static int NEXT_CHAR_INDEX = 0;
@@ -17,7 +18,9 @@ public class Person {
     private static Random random = new Random();
 
     /**
-     * Constructs a new Person starting at the specified floor.
+     * Constructs a new Person starting at the specified floor,
+     * with the direction of where he is headed, based on the position of
+     * his starting and arriving floor.
      * 
      * @param startFloor the floor number where the person starts
      */
@@ -25,6 +28,7 @@ public class Person {
         this.nickname = Person.generateNickname();
         this.startFloor = startFloor;
         this.targetFloor = this.generateTargetFloor();
+        this.direction = this.getDirection();
     }
 
     /**
@@ -69,4 +73,19 @@ public class Person {
     public String toString() {
         return this.nickname + this.targetFloor;
     }
+    /**
+     * Calcule la direction de la personne, où les directions sont
+     * stockées dans la classe ENUM
+     *  */ 
+    public Direction getDirection() {
+    if (this.targetFloor > this.startFloor) {
+        return Direction.UP;
+    } 
+    if (this.targetFloor < this.startFloor) {
+        return Direction.DOWN;
+    }
+    else {
+        return Direction.IDLE;
+    }
+}
 }
