@@ -39,12 +39,13 @@ public class Person {
     }
 
     /**
-     * Generates a random target floor.
+     * Generates a random target floor based on the real number of floors in the hotel
      * 
      * @return the target floor number
      */
     private static int generateTargetFloor() {
-        return random.nextInt(4);
+        int nbFloors = Config.getInt("hotel.floors.number");
+        return random.nextInt(nbFloors);
     }
 
     public String getNickname() {

@@ -129,7 +129,7 @@ public class Elevator {
      */
     public void loadPassengers(Floor floor) {
 
-        while (this.passengers.size() < this.capacity) {
+        while (this.isFull()) {
             Person person = floor.boardNextPerson();
             if (person == null)
                 break;
@@ -179,4 +179,14 @@ public class Elevator {
         return "[" + padded + "]" +
                 (unloaded.isBlank() ? "" : " " + unloaded);
     }
-}
+
+    /**
+     * Check if the elevator is full or not
+     * 
+     * @return boolean corresponding to a full elevator or not
+     */
+    public boolean isFull(){
+        return this.capacity > this.passengers.size();
+    }
+
+}   

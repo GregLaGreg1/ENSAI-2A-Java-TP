@@ -71,7 +71,9 @@ public class Floor {
 
     /**
      * Press the button to call the first elevator.
-     * Requests the first elevator to stop at this floor.
+     * if an elevator is already on its way to that floor, do nothing
+     * otherwise, find the least busy elevator and add the floor 
+     * to the end of its destinations list   
      * 
      * @param elevators the list of elevators available in the hotel
      */
