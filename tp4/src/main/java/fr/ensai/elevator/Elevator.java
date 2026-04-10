@@ -3,6 +3,7 @@ package fr.ensai.elevator;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.Random;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -25,6 +26,8 @@ public class Elevator {
     private List<Integer> destinationQueue;
     private List<Person> passengers;
     private List<Person> lastUnloaded;
+    private static Random random = new Random();
+
 
     /**
      * Constructs a new Elevator with the specified parameters.
@@ -196,6 +199,23 @@ public class Elevator {
      */
     public int getNumberPeopleInside() {
         return this.passengers.size();
+    }
+    
+    /**
+     * Rempli l'assenceur avec un nombre de passagers données, si possible
+     * 
+     *  @Parameter nombre de passagers qu'on veut faire monter
+     */
+    public void addPassengersElevator(int nbPassengers){
+        if (nbPassengers > this.capacity){
+            return;
+        }
+        for (int i = 0; i < nbPassengers; i++){
+            int idStartFloor = Config.getInt("hotel.floors.number");
+            int nbGeneratedFloor = random.nextInt(idStartFloor);
+            Person passenger = new Person(nbGeneratedFloor);
+            this.passengers.add(passenger);
+        }
     }
 
 }   
