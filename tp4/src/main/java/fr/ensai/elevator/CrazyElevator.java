@@ -1,13 +1,6 @@
 package fr.ensai.elevator;
 
-import static fr.ensai.elevator.Elevator.logger;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public class CrazyElevator extends Elevator{
 
@@ -19,10 +12,9 @@ public class CrazyElevator extends Elevator{
     }
 
     /**
-     * At each step, a crazy elevator can, with equal probability:
-     * remain stationary
-     * skip its next destination and go directly to the next one
-     * go to the next floor as a normal elevator
+     * On pioche avec équiproba égale à 1/3 une des situations au choix:
+     * L'ascenceur ne bouge pas; il évite le prochain arrêt et va directement au 
+     * suivant; il se comporte normalement et va au prochain arrêt.
      */
     @Override
     public void move() {
@@ -37,12 +29,12 @@ public class CrazyElevator extends Elevator{
     }
 
     /**
-     * Half of the time, the elevator unloads passengers whose target floor matches the current floor.
-     * The other half it doesn't.
-     * Updates the lastUnloaded list.
+     * Determine le nombre de passagers qui descendent dans cas différents
+     * tirés avec équiproba de 1/2 : Soit l'ascenceur s'arrête et se vide effectivement, 
+     * soit il ne s'arrête pas
      * 
-     * @param floor the Floor where passengers will exit
-     * @return the number of passengers unloaded
+     * @param floor L'étage où s'arrête les passagers
+     * @return Le nombre de passagers qui descendent
      */
     @Override
     public int unloadPassengers(Floor floor) {
@@ -55,17 +47,17 @@ public class CrazyElevator extends Elevator{
     }
     
     /**
-     * Loads passengers waiting on the specified floor to the space if
-     * the elevator is full, otherwise will act as usual
+     * Determine si l'ascenceur envoie les passagers dans l'espace s'il est plein 
+     * et qu'il y en a trop, soit il les fait monter simplement
      * 
-     * @param floor the Floor where passengers board the elevator
+     * @param floor L'étage où les personnes veulemnt rentrer dans l'ascenceur
      */
     @Override
     public void loadPassengers(Floor floor) {
-    if (this.isFull()){
+    if (this.isFull()) {
         this.getpassengers().clear();
-        }
-    else {
-        super.loadPassengers(floor);}
+    } else {
+        super.loadPassengers(floor);
     }
+}
 }
