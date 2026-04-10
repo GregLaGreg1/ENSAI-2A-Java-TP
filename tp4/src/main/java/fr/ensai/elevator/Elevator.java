@@ -189,4 +189,13 @@ public class Elevator {
         return this.capacity > this.passengers.size();
     }
 
+    /**
+     * Count the number of people in the elevator
+     * 
+     * @return number of people inside the elevator
+     */
+    public int getNumberPeopleInside() {
+        return this.passengers.size();
+    }
+
 }   
